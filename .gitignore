@@ -1,0 +1,28 @@
+# Environment variables — never commit these
+.env
+.env.local
+.env.*.local
+
+# Recovery files and Circle credentials
+.circle/
+
+# Build output
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Database (local data, not source)
+.data/
+
+# Bun
+.bun/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

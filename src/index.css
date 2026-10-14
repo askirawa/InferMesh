@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+/* ── InferMesh design tokens — forest editorial ── */
+:root {
+  /* Backgrounds */
+  --bg:              #0c1a14;
+  --bg-gradient:     linear-gradient(180deg, #0c1a14 0%, #0e1f18 60%, #0a1810 100%);
+  --surface:         rgba(255, 255, 255, 0.055);
+  --surface-strong:  rgba(255, 255, 255, 0.09);
+  --surface-muted:   #101e17;
+  --surface-card:    rgba(20, 40, 28, 0.8);
+
+  /* Text */
+  --ink:    #f0ede5;
+  --ink-2:  #d8d4c8;
+  --muted:  #9aaa98;
+  --subtle: #5a6b58;
+
+  /* Borders */
+  --border:        rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(240, 237, 229, 0.28);
+
+  /* Semantic */
+  --accent:       #d4c9a8;
+  --accent-hover: #e8e0cb;
+  --success:      #6ec98a;
+  --danger:       #e07b6a;
+
+  /* Forest accent green */
+  --forest:       #2d5a3d;
+  --forest-light: #3d7a52;
+  --sage:         #8aab7a;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Serif hero display — Playfair for editorial headings */
+.display-serif {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+}
+
+/* Sans display — Space Grotesk for UI headings */
+.display {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Monospace */
+.mono {
+  font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Slim scrollbars */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.08); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.14); }
+
+/* ── Sonner toast overrides ── */
+[data-sonner-toaster] {
+  --normal-bg:      #162014;
+  --normal-border:  rgba(255,255,255,0.10);
+  --normal-text:    #f0ede5;
+  --success-bg:     #0d2015;
+  --success-border: #6ec98a;
+  --success-text:   #6ec98a;
+  --error-bg:       #211009;
+  --error-border:   #e07b6a;
+  --error-text:     #e07b6a;
+}
+
+/* ── ConnectKit modal dark forest theme ── */
+:root {
+  --ck-font-family: 'DM Sans', sans-serif;
+  --ck-border-radius: 16px;
+  --ck-body-background: #101e17;
+  --ck-body-background-secondary: rgba(255,255,255,0.04);
+  --ck-body-background-tertiary: rgba(255,255,255,0.07);
+  --ck-body-color: #f0ede5;
+  --ck-body-color-muted: #9aaa98;
+  --ck-body-color-muted-hover: #d8d4c8;
+  --ck-body-divider: rgba(255,255,255,0.09);
+  --ck-primary-button-background: #d4c9a8;
+  --ck-primary-button-hover-background: #e8e0cb;
+  --ck-primary-button-color: #0c1a14;
+  --ck-secondary-button-background: rgba(255,255,255,0.06);
+  --ck-secondary-button-hover-background: rgba(255,255,255,0.10);
+  --ck-secondary-button-color: #f0ede5;
+  --ck-body-background-modal-overlay: rgba(0,0,0,0.70);
+  --ck-overlay-backdrop-filter: blur(8px);
+  --ck-focus-color: #6ec98a;
+  --ck-qr-dot-color: #f0ede5;
+}
+
+/* ── Utility: pill button ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--accent);
+  color: #0c1a14;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--border-strong);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.btn-outline:hover { background: var(--surface-strong); border-color: var(--ink-2); }
+
+/* ── Forest card surface ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.card-elevated {
+  background: var(--surface-card);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 1.25rem;
+}
