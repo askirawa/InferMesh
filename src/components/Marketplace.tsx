@@ -192,7 +192,7 @@ export default function Marketplace({ onSelectModel }: Props) {
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-9 pr-4 py-2.5 bg-[var(--surface)] border border-[var(--border)]
               rounded-xl text-sm text-[var(--ink)] placeholder:text-[var(--subtle)]
-              focus:outline-none focus:ring-1 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+              focus:outline-none focus:ring-1 focus:ring-[var(--border-strong)] focus:border-[var(--border-strong)]"
           />
         </div>
         <div className="flex gap-2 shrink-0">
@@ -203,10 +203,10 @@ export default function Marketplace({ onSelectModel }: Props) {
               onChange={(e) => setSortKey(e.target.value as SortKey)}
               className="h-full appearance-none pl-3 pr-8 py-2.5 bg-[var(--surface)] border border-[var(--border)]
                 rounded-xl text-sm text-[var(--muted)] hover:text-[var(--ink)] cursor-pointer
-                focus:outline-none focus:ring-1 focus:ring-emerald-500/40"
+                focus:outline-none focus:ring-1 focus:ring-[var(--border-strong)]"
             >
               {SORT_OPTIONS.map((o) => (
-                <option key={o.key} value={o.key} className="bg-[#1e2d3d]">{o.label}</option>
+                <option key={o.key} value={o.key} className="bg-[var(--surface-muted)]">{o.label}</option>
               ))}
             </select>
             <ChevronRight size={12} className="absolute right-2.5 top-1/2 -translate-y-1/2 rotate-90 text-[var(--subtle)] pointer-events-none" />
@@ -216,14 +216,14 @@ export default function Marketplace({ onSelectModel }: Props) {
             onClick={() => setShowFilters(!showFilters)}
             className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-sm font-medium transition-colors whitespace-nowrap
               ${showFilters || capFilter.length > 0
-                ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
+                ? 'border-[var(--border-strong)] bg-[var(--surface-strong)] text-[var(--sage)]'
                 : 'border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--ink)]'
               }`}
           >
             <SlidersHorizontal size={14} />
             <span className="hidden sm:inline">Filters</span>
             {capFilter.length > 0 && (
-              <span className="bg-emerald-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="bg-[var(--sage)] text-[var(--bg)] text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
                 {capFilter.length}
               </span>
             )}
@@ -232,12 +232,12 @@ export default function Marketplace({ onSelectModel }: Props) {
           {compareIds.length > 0 && (
             <button
               onClick={() => setShowCompare(true)}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-emerald-500/30
-                bg-emerald-500/10 text-emerald-400 text-sm font-medium whitespace-nowrap"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-[var(--border-strong)]
+                bg-[var(--surface-strong)] text-[var(--sage)] text-sm font-medium whitespace-nowrap"
             >
               <BarChart2 size={14} />
               <span className="hidden sm:inline">Compare</span>
-              <span className="bg-emerald-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="bg-[var(--sage)] text-[var(--bg)] text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
                 {compareIds.length}
               </span>
             </button>
@@ -258,7 +258,7 @@ export default function Marketplace({ onSelectModel }: Props) {
                 onClick={() => toggleCap(key)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors
                   ${capFilter.includes(key)
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                    ? 'bg-[var(--surface-strong)] text-[var(--sage)] border border-[var(--border-strong)]'
                     : 'bg-[var(--surface-muted)] text-[var(--muted)] border border-[var(--border)] hover:text-[var(--ink)]'
                   }`}
               >
@@ -291,7 +291,7 @@ export default function Marketplace({ onSelectModel }: Props) {
       {/* Loading */}
       {loading && (
         <div className="flex items-center justify-center py-20 gap-3 text-[var(--muted)]">
-          <Loader2 size={18} className="animate-spin text-emerald-500" />
+          <Loader2 size={18} className="animate-spin text-[var(--sage)]" />
           <span className="text-sm">Loading catalogue...</span>
         </div>
       )}
@@ -303,7 +303,7 @@ export default function Marketplace({ onSelectModel }: Props) {
           <p className="text-sm text-[var(--muted)]">No models match your filters</p>
           <button
             onClick={() => { setSearch(''); setCapFilter([]) }}
-            className="mt-3 text-xs text-emerald-400 hover:text-emerald-300"
+            className="mt-3 text-xs text-[var(--sage)] hover:text-[var(--ink-2)]"
           >
             Clear filters
           </button>
@@ -390,7 +390,7 @@ function ModelRow({
     <div
       className={`group flex items-stretch transition-colors
         ${!isLast ? 'border-b border-[var(--border)]' : ''}
-        ${isSelected ? 'bg-emerald-500/5' : 'hover:bg-[var(--surface-strong)]'}
+        ${isSelected ? 'bg-[var(--surface)]' : 'hover:bg-[var(--surface-strong)]'}
       `}
     >
       {/* Main clickable area */}
@@ -444,7 +444,7 @@ function ModelRow({
         <ChevronRight
           size={14}
           className={`text-[var(--subtle)] transition-transform shrink-0 self-center
-            ${isSelected ? 'rotate-90 text-emerald-400' : 'group-hover:text-[var(--muted)]'}`}
+            ${isSelected ? 'rotate-90 text-[var(--sage)]' : 'group-hover:text-[var(--muted)]'}`}
         />
       </button>
 
@@ -455,7 +455,7 @@ function ModelRow({
         title={isCompared ? 'Remove from comparison' : 'Add to compare'}
         className={`px-2 flex items-center justify-center border-l border-[var(--border)] transition-colors
           ${isCompared
-            ? 'text-emerald-400 bg-emerald-500/5'
+            ? 'text-[var(--sage)] bg-[var(--surface)]'
             : 'text-[var(--subtle)] opacity-0 group-hover:opacity-100 hover:text-[var(--ink)]'
           }
           disabled:opacity-30 disabled:cursor-not-allowed`}
@@ -479,7 +479,7 @@ function PriceBadge({
   if (price.status === 'free') {
     return (
       <div>
-        <span className={`${textSize} font-medium text-emerald-400 tabular-nums`}>Free</span>
+        <span className={`${textSize} font-medium text-[var(--sage)] tabular-nums`}>Free</span>
         {label && <p className={`${subSize} text-[var(--subtle)]`}>{label}</p>}
       </div>
     )
@@ -597,7 +597,7 @@ function DetailPanel({
             </div>
           </div>
           {pricing.isFree && (
-            <div className="flex items-center gap-1.5 mt-2 text-[10px] text-emerald-400">
+            <div className="flex items-center gap-1.5 mt-2 text-[10px] text-[var(--sage)]">
               <CheckCircle size={10} /> Confirmed free — Orbio reports $0.00 for both input and output
             </div>
           )}
@@ -673,8 +673,7 @@ function DetailPanel({
       <div className="px-5 pb-5 flex flex-col gap-2">
         <button
           onClick={() => onUseInPlayground(model.id)}
-          className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700
-            text-white text-sm rounded-lg transition-colors font-medium flex items-center justify-center gap-2"
+          className="btn-primary w-full justify-center text-sm rounded-xl"
         >
           Try in Playground
           <ExternalLink size={13} />
@@ -684,7 +683,7 @@ function DetailPanel({
           disabled={compareDisabled}
           className={`w-full py-2 rounded-lg text-sm font-medium transition-colors border flex items-center justify-center gap-2
             ${isCompared
-              ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20'
+              ? 'border-[var(--border-strong)] bg-[var(--surface-strong)] text-[var(--sage)] hover:bg-[var(--surface-strong)]'
               : 'border-[var(--border)] bg-[var(--surface-muted)] text-[var(--muted)] hover:text-[var(--ink)]'
             }
             disabled:opacity-30 disabled:cursor-not-allowed`}
@@ -727,13 +726,13 @@ function CompareDrawer({
       style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="w-full max-w-4xl bg-[#141c24] border border-[var(--border)] rounded-2xl overflow-hidden
+      <div className="w-full max-w-4xl bg-[var(--surface-muted)] border border-[var(--border)] rounded-2xl overflow-hidden
         max-h-[90dvh] overflow-y-auto">
 
         {/* Drawer header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[#141c24] z-10">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--surface-muted)] z-10">
           <div className="flex items-center gap-2">
-            <BarChart2 size={16} className="text-emerald-400" />
+            <BarChart2 size={16} className="text-[var(--sage)]" />
             <h2 className="display text-base font-semibold text-[var(--ink)]">
               Compare Models
             </h2>
@@ -866,8 +865,7 @@ function CompareDrawer({
               <button
                 key={m.id}
                 onClick={() => onUseInPlayground(m.id)}
-                className="w-full py-2 bg-emerald-500 hover:bg-emerald-600 text-white text-xs
-                  rounded-lg transition-colors font-medium flex items-center justify-center gap-1.5"
+                className="btn-primary w-full justify-center text-xs rounded-lg"
               >
                 Try in Playground <ExternalLink size={11} />
               </button>

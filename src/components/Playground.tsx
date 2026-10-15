@@ -249,7 +249,7 @@ export default function Playground({ initialModel }: Props) {
           {address && authStatusLabel && (
             <div className={`flex items-center gap-1.5 text-[10px] font-medium px-2 py-1 rounded-full
               ${authVerified
-                ? 'bg-emerald-500/10 text-emerald-400'
+                ? 'bg-[var(--surface-strong)] text-[var(--sage)]'
                 : authState.status === 'error'
                   ? 'bg-red-500/10 text-red-400'
                   : 'bg-[var(--surface)] text-[var(--muted)]'}`}
@@ -300,11 +300,11 @@ export default function Playground({ initialModel }: Props) {
 
       {/* Signing prompt */}
       {address && authState.status === 'signing' && (
-        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-          <ShieldCheck size={15} className="text-emerald-400 mt-0.5 shrink-0" />
+        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-[var(--surface-strong)] border border-[var(--border)]">
+          <ShieldCheck size={15} className="text-[var(--sage)] mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm text-emerald-300 font-medium">Approve in your wallet</p>
-            <p className="text-xs text-emerald-400/80 mt-0.5">
+            <p className="text-sm text-[var(--ink-2)] font-medium">Approve in your wallet</p>
+            <p className="text-xs text-[var(--sage)]/80 mt-0.5">
               Please sign the authentication message in your wallet. This verifies ownership —
               no gas fee, no transaction.
             </p>
@@ -372,8 +372,8 @@ export default function Playground({ initialModel }: Props) {
             </div>
             <div className="h-1 rounded-full bg-[var(--surface-muted)] overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all ${quotaPct >= 90 ? 'bg-amber-500' : 'bg-emerald-500'}`}
-                style={{ width: `${quotaPct}%` }}
+                className="h-full rounded-full transition-all"
+                style={{ width: `${quotaPct}%`, background: quotaPct >= 90 ? '#c9a04a' : 'var(--sage)' }}
               />
             </div>
           </div>
@@ -419,7 +419,7 @@ export default function Playground({ initialModel }: Props) {
 
         {modelPickerOpen && models.length > 0 && (
           <div className="absolute top-full left-0 right-0 z-30 mt-1 border border-[var(--border)]
-            rounded-xl bg-[#111820] shadow-xl overflow-hidden">
+            rounded-xl bg-[var(--surface-muted)] shadow-xl overflow-hidden">
             <div className="p-2 border-b border-[var(--border)]">
               <input
                 autoFocus
@@ -428,7 +428,7 @@ export default function Playground({ initialModel }: Props) {
                 onChange={(e) => setModelSearch(e.target.value)}
                 className="w-full px-3 py-2 bg-[var(--surface)] border border-[var(--border)] rounded-lg
                   text-sm text-[var(--ink)] placeholder:text-[var(--subtle)]
-                  focus:outline-none focus:ring-1 focus:ring-emerald-500/40"
+                  focus:outline-none focus:ring-1 focus:ring-[var(--border-strong)]"
               />
             </div>
             <div className="max-h-56 overflow-y-auto">
@@ -442,13 +442,13 @@ export default function Playground({ initialModel }: Props) {
                   }}
                   className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-[var(--surface-strong)]
                     transition-colors text-sm
-                    ${m.id === selectedModel ? 'bg-emerald-500/10' : ''}`}
+                    ${m.id === selectedModel ? 'bg-[var(--surface-strong)]' : ''}`}
                 >
                   <div className="flex-1 min-w-0">
                     <p className="text-[var(--ink)] truncate text-sm">{modelDisplayName(m)}</p>
                     <p className="text-xs text-[var(--subtle)]">{modelProvider(m)}</p>
                   </div>
-                  {m.id === selectedModel && <CheckCircle size={13} className="text-emerald-400 shrink-0" />}
+                  {m.id === selectedModel && <CheckCircle size={13} className="text-[var(--sage)] shrink-0" />}
                 </button>
               ))}
             </div>
@@ -460,7 +460,7 @@ export default function Playground({ initialModel }: Props) {
       <div className="flex-1 overflow-y-auto border border-[var(--border)] rounded-xl bg-[var(--surface)] min-h-0">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full py-12 text-center px-4">
-            <Zap size={28} className="text-emerald-400 mb-3" />
+            <Zap size={28} className="text-[var(--sage)] mb-3" />
             <p className="text-sm font-medium text-[var(--ink)]">Ready for inference</p>
             <p className="text-xs text-[var(--subtle)] mt-1 max-w-xs">
               {address
@@ -475,7 +475,7 @@ export default function Playground({ initialModel }: Props) {
             <div key={i} className={`flex flex-col gap-1.5 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
               <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed
                 ${msg.role === 'user'
-                  ? 'bg-emerald-500/15 text-[var(--ink)] border border-emerald-500/20'
+                  ? 'bg-[var(--surface-strong)] text-[var(--ink)] border border-[var(--border)]'
                   : 'bg-[var(--surface-strong)] text-[var(--ink)] border border-[var(--border)]'
                 }`}
               >
@@ -566,7 +566,7 @@ export default function Playground({ initialModel }: Props) {
 
       {/* Input */}
       <div className={`relative border rounded-xl bg-[var(--surface)] transition-all
-        ${canSend ? 'focus-within:ring-1 focus-within:ring-emerald-500/40 focus-within:border-emerald-500/40' : ''}
+        ${canSend ? 'focus-within:ring-1 focus-within:ring-[var(--border-strong)] focus-within:border-[var(--border-strong)]' : ''}
         border-[var(--border)]`}
       >
         <textarea
@@ -591,9 +591,7 @@ export default function Playground({ initialModel }: Props) {
           <button
             onClick={() => void handleSend()}
             disabled={!canSend}
-            className="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white
-              text-sm rounded-lg transition-colors font-medium
-              disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-primary rounded-lg disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {sending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
             Send

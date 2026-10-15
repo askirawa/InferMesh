@@ -81,7 +81,7 @@ export default function UsageHistory() {
             onClick={() => setFilterWallet(!filterWallet)}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm transition-colors shrink-0
               ${filterWallet
-                ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
+                ? 'border-[var(--border-strong)] bg-[var(--surface-strong)] text-[var(--sage)]'
                 : 'border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--ink)]'
               }`}
           >
@@ -94,7 +94,7 @@ export default function UsageHistory() {
       {/* Legend */}
       <div className="mb-4 flex items-center gap-4 text-xs text-[var(--subtle)]">
         <span className="flex items-center gap-1.5">
-          <CheckCircle size={11} className="text-emerald-400" /> Success
+          <CheckCircle size={11} className="text-[var(--sage)]" /> Success
         </span>
         <span className="flex items-center gap-1.5">
           <XCircle size={11} className="text-red-400" /> Error
@@ -157,7 +157,7 @@ export default function UsageHistory() {
               >
                 <div className="flex items-center justify-center pt-0.5">
                   {r.status === 'success'
-                    ? <CheckCircle size={13} className="text-emerald-400" />
+                    ? <CheckCircle size={13} className="text-[var(--sage)]" />
                     : r.status === 'error'
                     ? <XCircle size={13} className="text-red-400" />
                     : <Clock size={13} className="text-[var(--subtle)]" />
